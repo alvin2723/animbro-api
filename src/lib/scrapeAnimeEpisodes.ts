@@ -14,13 +14,12 @@ const scrapeAnimeEpisodes = (html: string): episode_list[] | undefined => {
 
   if (!episodeList) return undefined;
 
-  for (const episode of episodeList) {
+  for (const [index, episode] of EpisodeList.entries()) {
+    console.log(index, episode);
     const $ = load(episode);
     const titleText = $('li span:first a')?.text();
 
-    const episodeNumber = titleText
-      ?.replace(/\D.*$/, '')
-      .trim();
+    const episodeNumber = index + 1;
 
     result.unshift({
       episode: titleText,
