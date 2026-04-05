@@ -19,8 +19,7 @@ const scrapeAnimeEpisodes = (html: string): episode_list[] | undefined => {
     const titleText = $('li span:first a')?.text();
 
     const episodeNumber = titleText
-      ?.replace(/^.*Episode\s+/, '')
-      .replace(/\D.*$/, '')
+      ?.replace(/\D.*$/, '')
       .trim();
 
     result.unshift({
