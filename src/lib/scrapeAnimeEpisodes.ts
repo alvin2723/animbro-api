@@ -14,21 +14,19 @@ const scrapeAnimeEpisodes = (html: string): episode_list[] | undefined => {
 
   if (!episodeList) return undefined;
 
- for (const episode of episodeList) {
+ episodeList.forEach((episode, index) => {
     const $ = load(episode);
     const titleText = $('li span:first a')?.text();
 
-    const episodeNumber = titleText
-      ?.replace(/\D.*$/, '')
-      .trim();
+    const episodeNumber = episodeList.length - index;
 
     result.unshift({
       episode: titleText,
-      episode_number: episodeNumber ? parseInt(episodeNumber, 10) : undefined,
+      episode_number: episodeNumber,
       slug: $('li span:first a')?.attr('href')?.replace(/^https:\/\/otakudesu\.[a-zA-Z0-9-]+\/episode\//, '').replace('/', ''),
       otakudesu_url: $('li span:first a')?.attr('href')
     });
-  }
+  });
 
   return result;
 };
