@@ -1,5 +1,6 @@
 import { load } from 'cheerio';
 import type { episode_list } from '@/types/types';
+import { title } from 'process';
 
 const scrapeAnimeEpisodes = (html: string): episode_list[] | undefined => {
   const result: episode_list[] = [];
@@ -14,11 +15,11 @@ const scrapeAnimeEpisodes = (html: string): episode_list[] | undefined => {
 
   if (!episodeList) return undefined;
 
- episodeList.forEach((episode, index) => {
+  episodeList.forEach((episode, index) => {
     const $ = load(episode);
     const titleText = $('li span:first a')?.text();
-
-    const episodeNumber = episodeList.length - index;
+    
+    const episodeNumber = titleText.includes('Special') || titleText.includes('special') ? 'special' : episodeList.length - index;
 
     result.unshift({
       episode: titleText,
