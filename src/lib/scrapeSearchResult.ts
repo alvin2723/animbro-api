@@ -22,7 +22,8 @@ const scrapeSearchResult = (html: string): searchResultAnime[] => {
       genres,
       status: $('.set:nth-child(4)').text()?.replace('Status : ', ''),
       rating: $('.set:last-child').text()?.replace('Rating : ', ''),
-      url: $('h2 a').attr('href')
+      url: $('h2 a').attr('href'),
+      isHideImage: true,
     });
   });
 

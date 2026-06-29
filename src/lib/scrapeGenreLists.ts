@@ -15,7 +15,8 @@ const scrapeGenreLists = (html: string): genreType[] => {
     result.push({
       name: $('a').text(),
       slug: $('a').attr('href')?.replace('/genres/', '').replace('/', ''),
-      otakudesu_url: `${BASEURL}${$('a').attr('href')}`
+      otakudesu_url: `${BASEURL}${$('a').attr('href')}`,
+      isHideImage: true,
     });
   });
 

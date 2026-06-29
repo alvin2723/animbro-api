@@ -25,6 +25,7 @@ type anime = {
     poster: string | undefined;
     otakudesu_url: string | undefined;
   }[];
+  isHideImage: boolean | undefined;
 };
 
 type searchResultAnime = {
@@ -35,6 +36,7 @@ type searchResultAnime = {
   rating: string | undefined;
   genres: genre[];
   url: string | undefined;
+  isHideImage: boolean | undefined;
 };
 
 type ongoingAnime = {
@@ -45,6 +47,7 @@ type ongoingAnime = {
   release_day: string | undefined;
   newest_release_date: string | undefined;
   otakudesu_url: string | undefined;
+  isHideImage: boolean | undefined;
 };
 
 type completeAnime = {
@@ -55,12 +58,14 @@ type completeAnime = {
   rating: string | undefined;
   last_release_date: string | undefined;
   otakudesu_url: string | undefined;
+  isHideImage: boolean | undefined;
 };
 
 type genre = {
   name: string | undefined;
   slug: string | undefined;
   otakudesu_url: string | undefined;
+  isHideImage: boolean;
 };
 
 type episode_list = {
