@@ -65,7 +65,6 @@ type genre = {
   name: string | undefined;
   slug: string | undefined;
   otakudesu_url: string | undefined;
-  isHideImage: boolean;
 };
 
 type episode_list = {
