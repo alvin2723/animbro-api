@@ -11,6 +11,7 @@ const { BASEURL } = process.env;
 const home = async (): Promise<{
   ongoing_anime: ongoingAnimeType[];
   complete_anime: completeAnimeType[];
+  isHideImage: boolean;
 }> => {
   console.log("base", BASEURL);
   const { data } = await axios.get(BASEURL as string);
@@ -23,10 +24,12 @@ const home = async (): Promise<{
   ).toString();
   const ongoing_anime = scrapeOngoingAnime(ongoingAnimeEls);
   const complete_anime = scrapeCompleteAnime(completeAnimeEls);
+  const isHideImage = true;
 
   return {
     ongoing_anime,
     complete_anime,
+    isHideImage,
   };
 };
 

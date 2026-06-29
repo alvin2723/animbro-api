@@ -22,7 +22,6 @@ const scrapeOngoingAnime = (html: string): ongoingAnime[] => {
       release_day: $(".detpost .epztipe").text().trim(),
       newest_release_date: $(".detpost .newnime").text(),
       otakudesu_url: $(".detpost .thumb a").attr("href"),
-      isHideImage: true,
     });
   });
 

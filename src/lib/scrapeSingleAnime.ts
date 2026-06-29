@@ -46,7 +46,6 @@ const createAnimeData = (html: string, poster: string | undefined, synopsis: str
     batch,
     episode_lists,
     recommendations,
-    isHideImage: true
   }
 }
 

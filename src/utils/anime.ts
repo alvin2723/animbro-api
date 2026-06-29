@@ -1,13 +1,16 @@
-import axios from 'axios';
-import scrapeSingleAnime from '@/lib/scrapeSingleAnime';
-import type { anime as animeType } from '@/types/types';
+import axios from "axios";
+import scrapeSingleAnime from "@/lib/scrapeSingleAnime";
+import type { anime as animeType } from "@/types/types";
 
 const { BASEURL } = process.env;
-const anime = async (slug: string): Promise<animeType | undefined> => {
+const anime = async (
+  slug: string
+): Promise<{ result: animeType | undefined; isHideImage: boolean }> => {
   const { data } = await axios.get(`${BASEURL}/anime/${slug}`);
   const result = scrapeSingleAnime(data);
+  const isHideImage = true;
 
-  return result;
+  return { result, isHideImage };
 };
 
 export default anime;

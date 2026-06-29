@@ -22,7 +22,6 @@ const scrapeCompleteAnime = (html: string): completeAnime[] => {
       rating: $(".detpost .epztipe").text().trim(),
       last_release_date: $(".detpost .newnime").text(),
       otakudesu_url: $(".detpost .thumb a").attr("href"),
-      isHideImage: true,
     });
   });
 
