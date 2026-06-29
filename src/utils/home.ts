@@ -6,6 +6,7 @@ import {
   ongoingAnime as ongoingAnimeType,
   completeAnime as completeAnimeType,
 } from "@/types/types";
+import changeHideImageFlag from "./changeHideImageFlag";
 
 const { BASEURL } = process.env;
 const home = async (): Promise<{
@@ -24,7 +25,7 @@ const home = async (): Promise<{
   ).toString();
   const ongoing_anime = scrapeOngoingAnime(ongoingAnimeEls);
   const complete_anime = scrapeCompleteAnime(completeAnimeEls);
-  const isHideImage = true;
+  const isHideImage = changeHideImageFlag();
 
   return {
     ongoing_anime,

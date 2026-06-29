@@ -2,6 +2,7 @@ import axios from "axios";
 import { load } from "cheerio";
 import pagination from "@/lib/pagination";
 import scrapeCompleteAnime from "@/lib/scrapeCompleteAnime";
+import changeHideImageFlag from "./changeHideImageFlag";
 
 const { BASEURL } = process.env;
 const completeAnime = async (page: number | string = 1) => {
@@ -10,7 +11,7 @@ const completeAnime = async (page: number | string = 1) => {
   const completeAnimeEls = $(".venutama .rseries .rapi .venz ul li").toString();
   const completeAnimeData = scrapeCompleteAnime(completeAnimeEls);
   const paginationData = pagination($(".pagination").toString());
-  const isHideImage = true;
+  const isHideImage = changeHideImageFlag();
 
   return {
     paginationData,
