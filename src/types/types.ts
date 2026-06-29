@@ -25,6 +25,7 @@ type anime = {
     poster: string | undefined;
     otakudesu_url: string | undefined;
   }[];
+  isHideImage: boolean;
 };
 
 type searchResultAnime = {

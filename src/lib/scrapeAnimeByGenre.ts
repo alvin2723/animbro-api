@@ -2,6 +2,7 @@ import { load } from "cheerio";
 import pagination from "./pagination";
 import mapGenres from "./mapGenres";
 import type { genre } from "@/types/types";
+import changeHideImageFlag from "@/utils/changeHideImageFlag";
 
 const { BASEURL } = process.env;
 const scrapeAnimeByGenre = (html: string) => {
@@ -28,7 +29,6 @@ const scrapeAnimeByGenre = (html: string) => {
     genres: genre[];
     synopsis: string | undefined;
     otakudesu_url: string | undefined;
-    isHideImage: boolean;
   }[] = [];
 
   animeElements.forEach((animeEl) => {
@@ -53,13 +53,13 @@ const scrapeAnimeByGenre = (html: string) => {
       genres,
       synopsis: $(".col-anime .col-synopsis p").text(),
       otakudesu_url: $(".col-anime .col-anime-trailer a").attr("href"),
-      isHideImage: true,
     });
   });
 
   return {
     anime: result,
     pagination: pagination(html),
+    isHideImage: changeHideImageFlag(),
   };
 };
 
